@@ -15,7 +15,7 @@
 .noah-telegram-avatar{background:#ededed!important;color:#8c8c8c!important;border:1px solid #ddd!important}
 .noah-telegram-avatar svg{display:block;flex-shrink:0}
 @media(max-width:390px){.noah-alarm-time{font-size:33px!important}}
-</style></head><body><div id="stage"><div class="phone"><div id="status" class="status dark"><span>09:41</span><span>●●●  ▰</span></div><div class="island"></div><div id="root" class="screen wall"><div class="lock" onclick="home()"><div style="font-size:18px;margin-top:10px">♧</div><div class="day">10월 24일 토요일</div><div class="clock">09:41</div><div style="margin-top:35px;background:#ffffff20;border-radius:17px;padding:14px 18px;width:100%;backdrop-filter:blur(12px)"><small>텔레그램 · 힐라</small><div style="font-size:13px;margin-top:5px">오늘 몇 시에 와?</div></div><div class="hint">화면을 터치하여 잠금 해제</div><div class="flash"><button class="round">⌁</button><button class="round">◎</button></div></div></div><div id="bottom" class="bottom light"></div></div></div><script>
+</style></head><body><div id="stage"><div class="phone"><div id="status" class="status dark"><span>09:41</span><span>●●●  ▰</span></div><div class="island"></div><div id="root" class="screen wall"><div class="lock" onclick="noah20Passcode()"><div style="font-size:18px;margin-top:10px">♧</div><div class="day">10월 24일 토요일</div><div class="clock">09:41</div><div style="margin-top:35px;background:#ffffff20;border-radius:17px;padding:14px 18px;width:100%;backdrop-filter:blur(12px)"><small>텔레그램 · 힐라</small><div style="font-size:13px;margin-top:5px">오늘 몇 시에 와?</div></div><div class="hint">화면을 터치하여 잠금 해제</div><div class="flash"><button class="round">⌁</button><button class="round">◎</button></div></div></div><div id="bottom" class="bottom light"></div></div></div><script>
 const FIX='09:41';let view='lock',app='',sub='',person='',chatOrigin='텔레그램',activeVideo=0,activePhoto=0,callIndex=0,igTab='피드';let fightStage=0;
 const contacts={'힐라':'H','어머니♥':'♥','오스틴':'A','아카데미 동기방':'A','마르셀':'M','세드릭':'C','에블린':'E','테오':'T','루카스':'L','동기회 준비방':'✦','엘리엇 비서실장':'E','부관 리드':'R','홍보팀':'P','여동생':'S','정보 담당':'I'};
 const chats={
@@ -48,7 +48,7 @@ const videos=[['A gentleman’s guide to impeccable tailoring','THE MODERN GENTL
 const root=document.getElementById('root'),status=document.getElementById('status'),bottom=document.getElementById('bottom');
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function shell(html,dark=false){root.className='screen '+(dark?'wall':'');root.innerHTML=html;status.className='status'+(dark?' dark':'');bottom.className='bottom'+(dark?' light':'');}
-function lock(){view='lock';shell(`<div class="lock" onclick="home()"><div style="font-size:18px;margin-top:10px">♧</div><div class="day">10월 24일 토요일</div><div class="clock">09:41</div><div style="margin-top:35px;background:#ffffff20;border-radius:17px;padding:14px 18px;width:100%;backdrop-filter:blur(12px)"><small>텔레그램 · 힐라</small><div style="font-size:13px;margin-top:5px">오늘 몇 시에 와?</div></div><div class="hint">화면을 터치하여 잠금 해제</div><div class="flash"><button class="round">⌁</button><button class="round">◎</button></div></div>`,true)}
+function lock(){view='lock';shell(`<div class="lock" onclick="noah20Passcode()"><div style="font-size:18px;margin-top:10px">♧</div><div class="day">10월 24일 토요일</div><div class="clock">09:41</div><div style="margin-top:35px;background:#ffffff20;border-radius:17px;padding:14px 18px;width:100%;backdrop-filter:blur(12px)"><small>텔레그램 · 힐라</small><div style="font-size:13px;margin-top:5px">오늘 몇 시에 와?</div></div><div class="hint">화면을 터치하여 잠금 해제</div><div class="flash"><button class="round">⌁</button><button class="round">◎</button></div></div>`,true)}
 const iconStyles={'인스타그램':['linear-gradient(135deg,#ebc66b,#d75678,#7144ba)','◎'],'유튜브':['#fff','▶️'],'주식':['#131a22','↗'],'뉴스':['#f6f6f6','▤'],'텔레그램':['#31a8df','➤'],'사진':['linear-gradient(135deg,#f8e2c2,#7f9b8f)','✿'],'전화':['#44bb6d','☎'],'메시지':['#50c57a','●'],'설정':['#9ba1a6','⚙'],'사파리':['#e7f2fa','◉'],'캘린더':['#fff','24']};
 function icon(n){let [bg,txt]=iconStyles[n];return `<button class="appicon" onclick="openApp('${n}')"><span class="sq" style="background:${bg};color:${['유튜브','뉴스','캘린더'].includes(n)?'#2c3741':'white'}">${txt}</span><span>${({"텔레그램":"Telegram","인스타그램":"Instagram","유튜브":"YouTube","주식":"Stocks","뉴스":"News","사진":"Photos","캘린더":"Calendar","전화":"Phone","메시지":"Messages","사파리":"Safari","설정":"Settings","은행":"Bank","메일":"Mail"}[n]||n)}</span></button>`}
 function home(){view='home';app='';sub='';shell(`<div class="home"><div class="date">SATURDAY, OCTOBER 24</div><div class="heading">09:41</div><div class="widget"><small>THE DAILY BRIEF</small><strong>좋은 아침입니다, 노아.</strong><p>일정은 수첩에서 확인 · 읽지 않은 메시지 2개</p></div><div class="apps">${['텔레그램','인스타그램','유튜브','주식','뉴스','사진','캘린더'].map(icon).join('')}</div><div class="dock">${['전화','메시지','사파리','설정'].map(icon).join('')}</div></div>`,true)}
@@ -493,4 +493,50 @@ sendMsg=function(e){
 const noah18OriginalDelivery=noahV10DeliverSMS;
 noahV10DeliverSMS=function(){const before=sms[noahV10Florist]?.length||0;noah18OriginalDelivery();const data=sms[noahV10Florist]||[];for(let i=before;i<data.length;i++)noah18Mark(data[i],4);if(app==='메시지'&&person===noahV10Florist&&sub==='chat')drawChat()};
 noah18RefreshClock();
-</script></body></html>
+</script>
+<style id="noah20-css">
+.noah20-pin{height:100%;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:20px;background:linear-gradient(150deg,#1a2b37,#2d4050 50%,#141d29);text-align:center}
+.noah20-dots{display:flex;gap:17px;margin:19px 0 23px}.noah20-dots i{width:13px;height:13px;border:1.5px solid #fff;border-radius:50%;display:block}.noah20-dots i.on{background:white}
+.noah20-pad{display:grid;grid-template-columns:repeat(3,70px);gap:15px 19px}.noah20-pad button{width:70px;height:70px;border:0;border-radius:50%;background:#ffffff26;color:#fff;font-size:29px;cursor:pointer}.noah20-pad button:active{background:#ffffff70}
+.noah20-cancel{background:none;border:0;color:white;margin-top:18px;font-size:14px}
+#status .noah20-signal{display:inline-flex;gap:2px;align-items:end;margin-right:7px}#status .noah20-signal i{display:block;background:currentColor;width:3px;border-radius:1px}
+</style>
+<script id="noah20-js">
+// A notification must quote the actual message stored in the conversation.
+const noah20OriginalToast=noahV10Toast;
+noahV10Toast=function(channel,name,message,callback){
+ const collection=channel==='Messages'?sms:channel==='Telegram'?chats:null;
+ const last=collection?.[name]?.at(-1)?.[1];
+ return noah20OriginalToast(channel,name,last||message,callback);
+};
+// Match the initial Telegram notification to the actual last Hilla message.
+function noah20HillaPreview(){return String(chats['힐라']?.at(-1)?.[1]||'새 메시지가 없습니다.').replace(/^\[[^\]]+\]\s*/,'')}
+let noah20Digits='';
+function noah20Passcode(){
+ if(view!=='lock')return;
+ view='passcode';noah20Digits='';noah20DrawPin();
+}
+function noah20DrawPin(){
+ shell(`<div class="noah20-pin"><div style="font-size:13px;letter-spacing:.08em;opacity:.8">NOAH DURAN</div><div style="font-size:19px;margin-top:16px">암호 입력</div><div class="noah20-dots">${Array.from({length:4},(_,i)=>`<i class="${i<noah20Digits.length?'on':''}"></i>`).join('')}</div><div class="noah20-pad">${['1','2','3','4','5','6','7','8','9','','0','⌫'].map(x=>x?`<button onclick="noah20Key('${x}')">${x}</button>`:'<div></div>').join('')}</div><button class="noah20-cancel" onclick="lock()">취소</button></div>`,true);
+}
+function noah20Key(key){
+ if(key==='⌫'){noah20Digits=noah20Digits.slice(0,-1);noah20DrawPin();return}
+ noah20Digits+=key;
+ if(noah20Digits.length>=4){noah20Digits='';home();return}
+ noah20DrawPin();
+}
+const noah20OriginalLock=lock;
+lock=function(){noah20OriginalLock();const el=document.querySelector('.lock');if(!el)return;el.setAttribute('onclick','noah20Passcode()');const preview=el.querySelector('div[style*="font-size:13px"]');if(preview)preview.textContent=noah20HillaPreview();const hint=el.querySelector('.hint');if(hint)hint.textContent='터치하여 암호 입력';noah18RefreshClock()};
+// Remove the Wi-Fi indicator: cellular bars and battery only.
+function noah20Cellular(){
+ const statusRight=document.querySelector('#status span:last-child');if(!statusRight)return;
+ statusRight.innerHTML='<span class="noah20-signal" aria-label="셀룰러 연결"><i style="height:5px"></i><i style="height:8px"></i><i style="height:11px"></i><i style="height:14px"></i></span><span style="font-size:11px;font-weight:700;margin-right:5px">5G</span><span aria-label="배터리">▰</span>';
+}
+const noah20OriginalShell=shell;
+shell=function(html,dark=false){noah20OriginalShell(html,dark);noah20Cellular()};
+const noah20OldSettings=settings;
+settings=function(){noah20OldSettings();const items=document.querySelectorAll('.item .body b');for(const item of items){if(item.textContent.includes('Wi-Fi'))item.textContent='Cellular　　5G 연결됨'}};
+// Ensure the first visible lock notification uses the actual chat content.
+lock();noah20Cellular();
+</script>
+</body></html>
