@@ -1378,4 +1378,45 @@ home=function(){n34PreviousHome();const w=document.querySelector('.home .widget'
   if(view==='lock')lock();
 })();
 </script>
+<script id="noah42-message-clock-sync">
+(function(){
+  // A single canonical simulated clock is used by both the status bar and messages.
+  // Existing historic timestamps remain fixed; only newly delivered messages advance it.
+  let lastEventMs=0;
+  noah18Mark=function(entry,requestedMinutes=1){
+    const now=Date.now();
+    const gap=lastEventMs ? now-lastEventMs : 0;
+    lastEventMs=now;
+    // One minute per message, with a slightly longer interval after a pause.
+    const step=gap>120000?2:1;
+    noah18Minutes+=step;
+    const d=noah18Date();
+    entry.__noahLive=true;
+    entry.__noahTimestamp={
+      date:`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`,
+      minute:d.getHours()*60+d.getMinutes()
+    };
+    noah18RefreshClock();
+    return entry;
+  };
+  // Always repaint the displayed time from the same timestamp used for messages.
+  const oldRefresh=noah18RefreshClock;
+  noah18RefreshClock=function(){
+    oldRefresh();
+    const d=noah18Date();
+    const time=String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');
+    const status=document.querySelector('#status span:first-child');
+    if(status)status.textContent=time;
+    const homeClock=document.querySelector('.home .heading');
+    if(homeClock)homeClock.textContent=time;
+    const lockClock=document.querySelector('.lock .clock');
+    if(lockClock)lockClock.textContent=time;
+    const homeDate=document.querySelector('.home .date');
+    if(homeDate)homeDate.textContent=d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'}).toUpperCase();
+    const lockDate=document.querySelector('.lock .day');
+    if(lockDate)lockDate.textContent=`${d.getMonth()+1}월 ${d.getDate()}일 ${['일','월','화','수','목','금','토'][d.getDay()]}요일`;
+  };
+  noah18RefreshClock();
+})();
+</script>
 </body></html>
