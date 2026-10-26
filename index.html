@@ -15,7 +15,7 @@
 .noah-telegram-avatar{background:#ededed!important;color:#8c8c8c!important;border:1px solid #ddd!important}
 .noah-telegram-avatar svg{display:block;flex-shrink:0}
 @media(max-width:390px){.noah-alarm-time{font-size:33px!important}}
-</style><style>.n31-card .n31-watchsvg{display:block!important;visibility:visible!important;opacity:1!important;flex:none;position:relative;z-index:1}.n31-card .n31-visual{overflow:visible}</style></head><body><div id="stage"><div class="phone"><div id="status" class="status dark"><span>09:41</span><span>●●●  ▰</span></div><div class="island"></div><div id="root" class="screen wall"><div class="lock" onclick="noah20Passcode()"><div class="day">10월 26일 월요일</div><div class="clock">09:41</div><div style="margin-top:35px;background:#ffffff20;border-radius:17px;padding:14px 18px;width:100%;backdrop-filter:blur(12px)"><small>텔레그램 · 힐라</small><div style="font-size:13px;margin-top:5px">너도 일해.</div></div><div class="hint">터치하여 암호 입력</div><div class="flash"><button class="round">⌁</button><button class="round">◎</button></div></div></div><div id="bottom" class="bottom light"></div></div></div><script>
+</style><style>.n31-card .n31-watchsvg{display:block!important;visibility:visible!important;opacity:1!important;flex:none;position:relative;z-index:1}.n31-card .n31-visual{overflow:visible}</style></head><body><div id="stage"><div class="phone"><div id="status" class="status dark"><span>09:41</span><span>●●●  ▰</span></div><div class="island"></div><div id="root" class="screen wall"><div id="bottom" class="bottom light"></div></div></div><script>
 const FIX='09:41';let view='lock',app='',sub='',person='',chatOrigin='텔레그램',activeVideo=0,activePhoto=0,callIndex=0,igTab='피드';let fightStage=0;
 const contacts={'힐라':'H','어머니♥':'♥','오스틴':'A','아카데미 동기방':'A','마르셀':'M','세드릭':'C','에블린':'E','테오':'T','루카스':'L','동기회 준비방':'✦','엘리엇 비서실장':'E','부관 리드':'R','홍보팀':'P','여동생':'S','정보 담당':'I'};
 const chats={
@@ -1534,4 +1534,19 @@ home=function(){n34PreviousHome();const w=document.querySelector('.home .widget'
   if(oldDraw)drawChat=function(){updateData();const result=oldDraw.apply(this,arguments);updateVisible();return result;};
 })();
 </script>
-</body></html>
+<script id="noah61-single-lock-screen">
+(function(){
+  lock=function(){
+    view='lock';
+    const now=typeof noah18Date==='function'?noah18Date():new Date(2026,9,26,9,41);
+    const pad=n=>String(n).padStart(2,'0');
+    const day=`${now.getMonth()+1}월 ${now.getDate()}일 ${['일','월','화','수','목','금','토'][now.getDay()]}요일`;
+    const time=`${pad(now.getHours())}:${pad(now.getMinutes())}`;
+    const message='너도 일해.';
+    shell(`<div class="lock" onclick="noah20Passcode()"><div class="day">${day}</div><div class="clock">${time}</div><div style="margin-top:35px;background:#ffffff20;border-radius:17px;padding:14px 18px;width:100%;backdrop-filter:blur(12px)"><small>텔레그램 · 힐라</small><div style="font-size:13px;margin-top:5px">${message}</div></div><div class="hint">터치하여 암호 입력</div><div class="flash"><button class="round">⌁</button><button class="round">◎</button></div></div>`,true);
+    const panel=document.querySelector('#root > .lock');
+    if(panel)panel.setAttribute('onclick','noah20Passcode()');
+  };
+  if(view==='lock')lock();
+})();
+</script></body></html>
